@@ -1,0 +1,92 @@
+/*Find the Maximum
+Program Description :
+You are working on a data analysis project that involves processing an array and finding maximum values within contiguous subarrays. In this project, you need to find the maximum value for each and every contiguous subarray of size K within the given array arr. Your task is to create a program that can calculate these maximum values efficiently.
+
+Problem Statement:
+
+Write a program to find the maximum value for each and every contiguous subarray of size K within an array arr of size N.
+
+Input Format :
+first line contains n size of an array
+
+second line contains k size of subarray
+
+third line contains n spaced integers 
+
+Output Format :
+The program should accept the following inputs:
+
+Input :
+9
+3
+1 2 3 1 4 5 2 3 6 
+
+
+Output :
+3 3 4 5 5 5 6 
+
+
+Constraints :
+1 ≤ N ≤ 10^7
+1 ≤ K ≤ N
+0 ≤ arr[i] ≤ 10^7 
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> findmax(vector<int>& arr,int n,int k)
+{
+    vector<int> result;
+    int maxval=INT_MIN;
+    int maxind=-1;
+    //find maximum element in first subarray
+    for(int i=0;i<k;i++)
+    {
+        if(arr[i]>=maxval)
+        {
+            maxval=arr[i];
+            maxind=i;
+        }
+    }
+    result.push_back(maxval);
+    //using sliding window
+    for(int i=k;i<n;i++)
+    {
+        if(arr[i]>=maxval)
+        {
+            maxval=arr[i];
+            maxind=i;
+        }
+        else if(maxind<i-k+1)
+        {
+            maxval=INT_MIN;
+            for(int j=i-k+1;j<=i;j++)
+            {
+                if(arr[j]>=maxval)
+                {
+                    maxval=arr[j];
+                    maxind=j;
+                }
+            }
+        }
+        result.push_back(maxval);
+    }
+    return result;
+}
+int main()
+{
+    int n,k;
+    cin>>n>>k;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    vector<int> re=findmax(arr,n,k);
+    for(int i=0;i<re.size();i++)
+    {
+        cout<<re[i]<<" ";
+    }
+}
+
+
