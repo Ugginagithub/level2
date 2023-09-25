@@ -1,0 +1,34 @@
+String Finding
+Program Description :
+You are developing a text analysis tool for a data processing application. The tool needs to determine whether a specific substring, "K," is present within a given string, "S." This functionality is crucial for identifying patterns and references within the text data.
+
+Write a Python function "is_substring_present(S, K)" to check if the substring "K" is present in the string "S."
+
+Here are the function parameters:
+
+S (string): The input string in which you need to search for the substring.
+
+K (string): The substring you want to check for in the input string.
+
+Your function should return 1 if the substring "K" is found within the string "S," and 0 otherwise.
+
+Input Format :
+The first line contains a string S
+The second line an substring K 
+
+Output Format :
+If substring K present in S print 1 else 0
+ 
+
+Input :
+jhdfcodemindgbjhnk
+
+codemind
+
+
+Output :
+1
+
+
+Constraints :
+1<=|S|,|K|<=10^5 
