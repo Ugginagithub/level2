@@ -1,0 +1,45 @@
+/*Set Kth Bit
+Program Description :
+You are working on a computer program that deals with binary representations of numbers. Your task is to create a Python function set_kth_bit(N, K) that takes an integer N and a non-negative integer K as input. The function should set the Kth bit (counting from the right, starting with 0 as the least significant bit) in the binary representation of N to 1 if it's not already set, and return the modified integer.
+
+Here are the function parameters:
+
+N (integer): The input number whose binary representation needs modification.
+
+K (non-negative integer): The position of the bit to set (0-indexed).
+
+Your function should return the modified integer N with the Kth bit set.
+
+Input Format :
+A single line contains two numbers N and K.
+
+Output Format :
+Display the result number after making kth bit set.
+
+Input :
+16 2
+
+
+Output :
+20
+
+
+Constraints :
+1<= N <=10^6
+
+1<= K <=32
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int setbit(int n,int k)
+{
+    return (n | (1 << k ));
+}
+int main()
+{
+    int n,k;
+    cin>>n>>k;
+    int p=setbit(n,k);
+    cout<<p;
+}
