@@ -1,0 +1,84 @@
+/*Find the Beauty
+Program Description :
+You are a data analyst working for a retail company that tracks customer purchases. Your task is to analyze customer behavior and identify the maximum number of "beautiful" elements in an array representing purchase amounts. An element in the array is considered "beautiful" if it is greater than or equal to the sum of all elements before it. Accurate identification of beautiful elements is crucial for understanding customer spending patterns.
+
+Problem Statement:
+
+Write a program to find and print the maximum number of "beautiful" elements in an array after rearranging the array.
+
+Input Format :
+first line no of test cases
+
+second line length of an array
+
+third line contains N spaced integers 
+
+Output Format :
+The program should print a single integer, which is the maximum number of beautiful elements in the array after rearranging the elements.
+
+Input :
+1
+
+5
+
+5 4 2 1 3 
+
+
+Output :
+3
+
+
+Constraints :
+1<=t<=100
+
+1<=n<=10^5
+
+1<=A[i]<=10^9*/
+
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int maxBeautifulElements(vector<int>& arr) {
+    int n = arr.size();
+    int beautifulCount = 0;
+    long long prefixSum = 0;  // Use long long to prevent overflow
+
+    // Sort the array in ascending order
+    sort(arr.begin(), arr.end());
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] >= prefixSum) {
+            beautifulCount++;
+            prefixSum += arr[i];
+        }
+    }
+
+    return beautifulCount;
+}
+
+int main() {
+    int t;
+    cin >> t;
+
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<int> arr(n);
+
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+
+        int maxBeautiful = maxBeautifulElements(arr);
+
+        cout << maxBeautiful << endl;
+    }
+
+    return 0;
+}
+
+
+
