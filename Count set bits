@@ -1,0 +1,36 @@
+Count Set Bits
+Program Description :
+Count the set bits in a given number in its binary representation
+
+Tevitt is Playing with number system and his teacher has given him a task to count Set Bits in the given number in its Binary Representation, help him to complete the task.
+
+Input Format :
+First line contains an integer Q which indicates the number of queries.
+
+Next Q lines contains a number.
+
+Output Format :
+Display its respective count of Set Bits Binary Representation in Q lines.
+
+Input :
+3
+
+5
+
+7
+
+9
+
+
+Output :
+2
+
+3
+
+2
+
+
+Constraints :
+1<= Q <=1000
+
+1<= N <=100000
