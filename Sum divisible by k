@@ -1,0 +1,29 @@
+Sum Divisible by K
+Program Description :
+You are working on a data analysis project that involves processing an array of integers. In this project, you need to find the length of the longest subarray within the given array where the sum of its elements is divisible by a positive integer K. Your task is to create a program that can calculate the length of this longest subarray efficiently.
+
+Problem Statement:
+
+Write a program to find the length of the longest subarray within an array arr of size N where the sum of its elements is divisible by the given positive integer K.
+
+Input Format :
+An integer array arr of size N (1 ≤ N ≤ 10^6), representing the elements of the array.
+
+A positive integer K (1 ≤ K ≤ 10^9), representing the value by which the sum should be divisible.
+
+Output Format :
+The program should return an integer, which is the length of the longest subarray within arr where the sum of its elements is divisible by K. If no such subarray exists, return 0.
+
+Input :
+6
+2 7 6 1 4 5
+3 
+
+
+Output :
+4
+
+
+Constraints :
+1<=N,K<=10^6
+-10^5<=A[i]<=10^5 
