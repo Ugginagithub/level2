@@ -1,0 +1,58 @@
+/*Find the Element that Appears Once
+Program Description :
+You are working on a project for an electronics manufacturer that produces a series of devices with unique identification numbers. Each device is assigned a positive integer identification number, and these numbers are stored in a sorted array. However, there's a problem during the manufacturing process: one device has been assembled with a unique identification number that appears only once in the array, while all other devices have their numbers occur exactly twice.
+
+Write a Python function find_single_occurrence(arr) to identify and return the unique identification number that occurs only once in the sorted array.
+
+Here's the function parameter:
+
+arr (list of integers): A sorted array of positive integers where all numbers, except one, occur exactly twice.
+
+Your function should efficiently find and return the single occurrence number.
+
+Input Format :
+The first line contains an integer N.
+
+The second line contains space-separated integers of the array.
+
+Output Format :
+A single line contains integer output.
+
+Input :
+5
+
+1 1 2 5 5
+
+
+Output :
+2
+
+
+Constraints :
+0 < N <= 10^6
+0 <= A[i] <= 10^9*/
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    unordered_map<int,int> m;
+    int num;
+    for(int i=0;i<n;i++)
+    {
+        cin>>num;
+        m[num]++;
+    }
+    for(auto it=m.begin();it!=m.end();it++)
+    {
+        if(it->second==1)
+        {
+            cout<<it->first;
+        }
+    }
+}
