@@ -1,0 +1,28 @@
+Max subarray With Sum Zero
+Program Description :
+You are working on a data analysis project that involves processing an array of integers. In this project, you need to find the maximum size of a subarray within the given array that has a sum equal to zero. Your task is to create a program that can calculate this maximum subarray size.
+
+Problem Statement:
+
+Write a program to find the maximum size of a subarray within an array arr of size N that has a sum equal to zero.
+
+Input Format :
+An integer array arr of size N (1 ≤ N ≤ 10^6), representing the elements of the array. The array can contain both positive and negative integers.
+
+Output Format :
+The program should return an integer, which is the maximum size of a subarray within arr that has a sum equal to zero.
+
+Input :
+8
+
+15 -2 2 -8 1 7 10 23 
+
+
+Output :
+5
+
+
+Constraints :
+1 <= N <= 10^5
+
+-1000 <= A[i] <= 1000 
