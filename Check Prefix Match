@@ -1,0 +1,83 @@
+/*Check Prefix Match
+Program Description :
+You are developing a text analysis tool that needs to determine how many strings in a given array match a specified prefix of a target string. Your program will be used to identify relevant documents based on the common prefixes of words or phrases.
+
+Write a Python function count_matching_prefixes(arr, s, k) to solve this problem.
+
+Here are the function parameters:
+
+arr (list of strings): An array of strings containing n elements.
+
+s (string): The target string for which you want to find matching prefixes.
+
+k (integer): The length of the prefix to consider.
+
+Your function should return the count of strings in the arr whose prefix of length k matches with the k-length prefix of the s string.
+
+Input Format :
+The first line contains the length of the array.
+
+The second line contains an array of strings.
+
+The third line contains an integer k.
+
+The fourth line contains string s.
+
+Output Format :
+Print the count of the matched prefixes.
+
+Input :
+5
+
+codemind code codingmind mind coder
+
+3
+
+coder
+
+
+Output :
+4
+
+
+Constraints :
+1 <= n <= 1000
+1 <= |arr[i]| , |str| <= 1000
+1 <= k <= 1000​​​​​​​*/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int cpm(vector<string>&arr,string s,int k)
+{
+    string pre_s=s.substr(0,k);
+    int c=0;
+    for(const string& word:arr)
+    {
+        string pre_w=word.substr(0,k);
+        if(pre_s==pre_w)
+        {
+            c++;
+        }
+    }
+    return c;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    vector<string> v(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>v[i];
+    }
+    int k;
+    cin>>k;
+    string s;
+    cin>>s;
+    int re=cpm(v,s,k);
+    cout<<re;
+}
+
+
+
