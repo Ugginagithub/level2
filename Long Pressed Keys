@@ -1,0 +1,60 @@
+/*Long Pressed Keys
+Program Description :
+Your friend is typing his name into a keyboard, sometimes when typing a character the key might get pressed long and the character will be typed 1 or more times..
+
+you will be given two strings original string and typed string. you need to examine the strings and print true if it was origina string with some characters being long pressed else print false.
+ 
+
+Input Format :
+The first line contains an original string.
+
+the second line contains a typed string.
+
+Output Format :
+Print "true" of "false" based on problem description.
+
+Input :
+sekhar
+
+sssekharrrrr
+
+
+Output :
+true
+
+
+Constraints :
+1< len(original), len(typed) <=10^5*/
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+bool lpk(string s,string t)
+{
+    int i=0,j=0;
+    while(j<t.length())
+    {
+        if(i<s.length() && s[i]==t[j])
+        {
+            i++;
+            j++;
+        }
+        else if(j==0 || t[j]!=t[j-1])
+        {
+            return false;
+        }
+        else{
+            j++;
+        }
+    }
+    return i==s.length();
+}
+int main()
+{
+    string s,t;
+    cin>>s;
+    cin>>t;
+    bool re=lpk(s,t);
+    cout<<(re ? "true" : "false");
+}
