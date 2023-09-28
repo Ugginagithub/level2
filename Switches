@@ -1,0 +1,34 @@
+Switches
+Program Description :
+Ram is known for his mischievous nature, and this time, he has come up with a prank to irritate his friend. He has a switchboard with 'n' switches, all initially turned OFF. Ram plans to toggle these switches in a specific pattern during each round. His friend is curious to know how many switches will be in the ON state after Ram has completed his prank. You need to create a program that calculates this for his friend.
+
+Problem Statement:
+
+Write a program to calculate the number of switches that will be in the ON state after Ram completes his prank of toggling the switches according to the specified pattern.
+
+Input Format :
+The program should accept a single input integer N, representing the number of switches on the switchboard.
+
+Output Format :
+The program should return an integer, which is the number of switches that will be in the ON state after Ram completes his prank.
+
+Input :
+n = 5
+
+
+Output :
+2
+
+
+Constraints :
+1 ≤ N ≤10^6
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int r=sqrt(n);
+    cout<<r;
+}
