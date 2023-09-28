@@ -1,0 +1,35 @@
+Three Idiots
+Program Description :
+You are working on a problem related to mathematical expressions. In this scenario, you need to determine whether an expression of the form "x A y B z C" exists, where x, y, and z can be replaced by either addition or subtraction operations, and the final result of the expression is zero. Your task is to create a program that can determine if such an expression exists.
+
+Problem Statement:
+
+Write a program to check whether an expression of the form "x A y B z C" exists, where x, y, and z can be replaced by addition or subtraction operations (±), and the final result of the expression is zero.
+
+Input Format :
+An integer A (-10^9 ≤ A ≤ 10^9), representing the first number.
+An integer B (-10^9 ≤ B ≤ 10^9), representing the second number.
+An integer C (-10^9 ≤ C ≤ 10^9), representing the third number. 
+Output Format :
+The program should return a string:
+
+Input :
+2
+
+2 2 2
+
+3 2 4 
+
+
+Output :
+NO
+
+NO
+
+
+Constraints :
+-10^9 ≤ A ≤ 10^9
+
+-10^9 ≤ B ≤ 10^9
+
+-10^9 ≤ C ≤ 10^9
