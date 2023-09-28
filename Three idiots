@@ -1,4 +1,4 @@
-Three Idiots
+/*Three Idiots
 Program Description :
 You are working on a problem related to mathematical expressions. In this scenario, you need to determine whether an expression of the form "x A y B z C" exists, where x, y, and z can be replaced by either addition or subtraction operations, and the final result of the expression is zero. Your task is to create a program that can determine if such an expression exists.
 
@@ -32,4 +32,51 @@ Constraints :
 
 -10^9 ≤ B ≤ 10^9
 
--10^9 ≤ C ≤ 10^9
+-10^9 ≤ C ≤ 10^9*/
+
+
+
+#include <iostream>
+
+using namespace std;
+
+bool isZeroExpression(int A, int B, int C) {
+    int operations[8];  // Array to represent possible operators (+1 for addition, -1 for subtraction)
+    for (int i = 0; i < 8; i++) {
+        operations[0] = (i & 1) ? 1 : -1;
+        operations[1] = (i & 2) ? 1 : -1;
+        operations[2] = (i & 4) ? 1 : -1;
+
+        // Calculate the result of the expression
+        int result = A * operations[0] + B * operations[1] + C * operations[2];
+
+        // Check if the result is zero
+        if (result == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int main() {
+    int T; // Number of test cases
+    cin >> T;
+
+    for (int i = 0; i < T; i++) {
+        long long A, B, C; // Input numbers
+        cin >> A >> B >> C;
+        //cout<<A<<" "<<B<<" "<<C;
+
+        // Check if a zero expression exists for the current test case
+        bool result = isZeroExpression(A, B, C);
+
+        // Output the result for the current test case
+        if (result) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
+
+    return 0;
+}
