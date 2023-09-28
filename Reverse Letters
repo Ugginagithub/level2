@@ -1,0 +1,56 @@
+/*Reverse Letters
+Program Description :
+You are working on a project that involves processing textual data and sorting arrays with a specific pattern. Your task is to write a Python program that takes an input string and an array of integers, and performs the following operations:
+
+Reverse the input string based on the following rules:
+
+All characters that are not English letters should remain in the same position.
+
+All English letters (both lowercase and uppercase) should be reversed.
+
+Input Format :
+A single line contains a string S.
+
+Output Format :
+Print the string as an output based on problem description.
+
+Input :
+abc-abc
+
+
+Output :
+cba-cba*/
+
+#include<bits/stdc++.h>
+using namespace std;
+bool isenglish(char c)
+{
+    return(c>='a'&&c<='z') ||(c>='A'&&c<='Z');
+}
+string reve(string s)
+{
+    string reverse=s;
+    int start=0;
+    int end=s.length()-1;
+    while(start<end)
+    {
+        while(start<end && !isenglish(s[start]))
+        {
+            start++;
+        }
+        while(start<end && !isenglish(s[end]))
+        {
+            end--;
+        }
+        swap(reverse[start],reverse[end]);
+        start++;
+        end--;
+    }
+    return reverse;
+}
+int main()
+{
+    string s;
+    cin>>s;
+    cout<<reve(s);
+}
