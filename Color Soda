@@ -1,0 +1,77 @@
+/*Color Soda
+Program Description :
+You are an owner of a color soda shop, each color soda costs 5/-. Customers are standing in a queue to buy from you and buy one at a time. Each customer will only buy one soda and pay with either a 5/-, 10/-, or 20/- bill. You must provide the correct change to each customer so that the net transaction is that the customer pays 5/-.
+
+NOTE: At first, you do not have any bill to provide changes with. You can provide changes from the bills that you get from the previous customers. 
+
+Input Format :
+ First line contains the length of the bills array.
+
+  Second line contains an array of bills. 
+
+Output Format :
+Print a single line output containing True or False.
+
+Input :
+6
+
+5 5 10 20 5 10
+
+
+Output :
+True
+
+
+Constraints :
+1< N <=10^6
+
+0<= N[i] <=10^4*/
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+bool canProvideChange(vector<int>& bills) {
+    int change5 = 0;  // Number of 5/- bills
+    int change10 = 0; // Number of 10/- bills
+
+    for (int i = 0; i < bills.size(); i++) {
+        if (bills[i] == 5) {
+            change5++;
+        } else if (bills[i] == 10) {
+            if (change5 > 0) {
+                change5--;
+                change10++;
+            } else {
+                return false; // Cannot provide change
+            }
+        } else { // bills[i] == 20
+            if (change10 > 0 && change5 > 0) {
+                change10--;
+                change5--;
+            } else if (change5 >= 3) {
+                change5 -= 3;
+            } else {
+                return false; // Cannot provide change
+            }
+        }
+    }
+
+    return true;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    vector<int> bills(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> bills[i];
+    }
+
+    bool result = canProvideChange(bills);
+    cout << (result ? "True" : "False") << endl;
+
+    return 0;
+}
