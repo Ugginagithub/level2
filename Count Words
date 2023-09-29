@@ -1,0 +1,71 @@
+/*Count Words
+Program Description :
+Given a input string, count the words which starts with vowel and ends with a consonent. string is case sensitive.
+
+Input Format :
+Input line contains string s.
+
+Output Format :
+Display the count words that startswith vowel ends with consonent.
+
+Input :
+Good Explination
+
+
+Output :
+1
+
+
+Constraints :
+1<=len(S)<=1000*/
+
+
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+using namespace std;
+
+bool isVowel(char c) {
+    char vowels[] = "aeiouAEIOU";
+    for (int i = 0; vowels[i]; i++) {
+        if (c == vowels[i]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool isConsonant(char c) {
+    char consonants[] = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ";
+    for (int i = 0; consonants[i]; i++) {
+        if (c == consonants[i]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int countWordsWithVowelConsonant(string s) {
+    int count = 0;
+    istringstream iss(s);
+    string word;
+
+    while (iss >> word) {
+        if (word.length() >= 2 && isVowel(word[0]) && isConsonant(word.back())) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    string s;
+    getline(cin, s);
+
+    int result = countWordsWithVowelConsonant(s);
+    cout << result << endl;
+
+    return 0;
+}
