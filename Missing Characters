@@ -1,0 +1,52 @@
+/*Missing Characters
+Program Description :
+Given sentence str. The task is to find whether the given sentence contains all letters of the English alphabet (a to z or A to Z). If it does not, then print all missing letters of the alphabet, otherwise print 0. Note All characters in the given sentence should be treated as case insensitive, which means that ‘A’ and ‘a’ are to be treated as the same. The output should be in alphabetic order The output should contain only lowercase alphabets If none of the letters are missing, print 0 as the output.
+
+Input Format :
+A single line contains a string S.
+
+Output Format :
+Print a string that contains alphabets for those who are not in the given string.
+
+Input :
+The four boxing wizard starts over quickly
+
+
+Output :
+jmp
+
+
+Constraints :
+1<= len(S) <=10^4*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string s;
+    getline(cin,s);
+    bool present[26]={false};
+    transform(s.begin(),s.end(),s.begin(),::tolower);
+    for(char c:s)
+    {
+        if(isalpha(c))
+        {
+            present[c-'a']=true;
+        }
+    }
+    string missingletter;
+    for(int i=0;i<26;i++)
+    {
+        if(!present[i])
+        {
+            missingletter+=('a'+i);
+        }
+    }
+    if(missingletter.empty())
+    {
+        cout<<"0"<<endl;
+    }
+    else{
+        cout<<missingletter<<endl;
+    }
+}
