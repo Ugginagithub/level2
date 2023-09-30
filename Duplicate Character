@@ -1,0 +1,41 @@
+/*Duplicate Character
+Program Description :
+Sheena is a freelancer data entry operator. Daily she has to type 1000 medicine names or barcode as a part of task. Unfortunately, she is having some problem with keyboard. Due to this issue, there are multiple entries of characters in the words. Write a program to print all duplicate characters along with their count.
+
+Input Format :
+A single line contains a string S.
+
+Output Format :
+Print all duplicate characters along with their count.
+
+Input :
+aabbbcd
+
+
+Output :
+a-2 b-3
+
+
+Constraints :
+1< len(S) <=10^4*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string s;
+    cin>>s;
+    unordered_map<char,int> m;
+    for(int i=0;i<s.size();i++)
+    {
+        m[s[i]]++;
+    }
+    string order="abcdefghijklmnopqrstuvwxyz";
+    for(auto i:order)
+    {
+        if(m.find(i)!=m.end() && m[i]>1)
+        {
+            cout<<i<<"-"<<m[i]<<" ";
+        }
+    }
+}
