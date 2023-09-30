@@ -1,0 +1,60 @@
+/*Minimum Digit Elements
+Program Description :
+You are given an array of integers called an input array. Each element in the array represents a single integer. Your task is to write a Python function count_min_digit_elements(input array) that counts the number of elements in the array that have the minimum number of digits. A minimum digit element is one that has the fewest number of digits when compared to all other elements in the array.
+
+Input Format :
+Input line 1 contains array length
+
+Next line consists of N array elements
+
+Output Format :
+Display the count of elements with min number of digits.
+
+Input :
+5
+23 433 1 45 7889
+
+
+Output :
+1
+
+
+Constraints :
+The length of inputArray (n) will be between 1 and 1000.
+
+Each integer in inputArray will be between -10^6 and 10^6, inclusive.*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int count(int n)
+{
+    int r,c=0;
+    while(n)
+    {
+        r=n%10;
+        c++;
+        n/=10;
+    }
+    return c;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int k=*min_element(arr,arr+n);
+    int c=count(k);
+    int co=0;
+    for(int i=0;i<n;i++)
+    {
+        if(count(arr[i])==c)
+        {
+            co++;
+        }
+    }
+    cout<<co;
+}
