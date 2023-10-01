@@ -1,0 +1,61 @@
+/*Twin Primes in a Range
+Program Description :
+You are a mathematician with a keen interest in number theory, and you are working on a research project related to prime numbers. Your task is to create a function that can identify twin prime numbers. Twin prime numbers are defined as two prime numbers p1 and p2 such that their absolute difference is exactly 2. Identifying twin prime numbers is crucial for your research in number theory.
+
+Problem Statement:
+
+Write a program to identify twin prime numbers based on the definition that two primes p1 and p2 are called twin primes if abs(p1 - p2) = 2.
+
+Input Format :
+The only line of input contains two numbers A and B. 
+
+Output Format :
+All twin prime pairs present between A and B (inclusive). Print each pair in a seperate line. 
+
+Input :
+1 20
+
+
+Output :
+3 5
+5 7
+11 13
+17 19 
+
+
+Constraints :
+1 <= A, B <= 10000 */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int L,R;
+    cin>>L>>R;
+    vector<bool>isprime(R+1,false);
+    vector<int>prime;
+    for(int i=2;i<=R;i++){
+        if(isprime[i]==false)
+        {
+            isprime[i]=true;
+            if(i>=L)
+            prime.push_back(i);
+            for(int j=i*i;j<R+1;j+=i)
+            {
+                isprime[j]=true;
+            }
+        }
+    }
+    vector<int>ans;
+    for(int i=1;i<prime.size();i++)
+    {
+        if(prime[i-1]+2==prime[i])
+        {
+            ans.push_back(prime[i-1]);
+            ans.push_back(prime[i]);
+        }
+    }
+    for(int i=0;i<ans.size()-1;i+=2){
+        cout<<ans[i]<<" "<<ans[i+1]<<endl;
+    }
+}
