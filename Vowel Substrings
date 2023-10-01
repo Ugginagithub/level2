@@ -1,0 +1,50 @@
+/*Vowel Substrings
+Program Description :
+You are given a string consisting of lowercase letters. Your task is to write a Python function to count the number of vowel substrings in the given string.
+
+A vowel substring is defined as a contiguous substring of the input string that contains all five vowels ('a', 'e', 'i', 'o', and 'u') at least once.
+
+Write a Python function called count_vowel_substrings that takes one argument, input_string, a string consisting of lowercase letters. The function should return an integer representing the number of vowel substrings in the input string.
+
+Input Format :
+A single line contains a string S.
+
+Output Format :
+Print the count of number of vowel substrings.
+
+Input :
+aeiouu
+
+
+Output :
+2
+
+
+Constraints :
+1< len(S) <=1000*/
+
+#include<bits/stdc++.h>
+using namespace std;
+bool isVowel(char c) {
+    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+}
+int fun(string s) {
+    int ans = 0;
+    int n = s.size();
+    for (int i = 0; i < n; i++) {
+        unordered_set<char> st;
+        for (int j = i; j < n; j++) {
+            char ch = s[j];
+            if (!isVowel(ch)) break;
+            st.insert(ch);
+            ans += st.size() == 5;
+        }
+    }
+    return ans;
+}
+int main(){
+    string s;
+    cin>>s;
+    int res=fun(s);
+    cout<<res;
+}
