@@ -1,0 +1,63 @@
+/*slide the bar
+Program Description :
+You are a software developer working on a data analysis project that involves processing numerical data. Your task is to create a function that checks whether there exist two distinct indices i and j in an integer array nums such that nums[i] == nums[j] and abs(i - j) <= k. Accurate detection of such duplicates within a specified maximum distance k is crucial for identifying patterns in data.
+
+Problem Statement:
+
+Write a program to check whether there exist two distinct indices i and j in the integer array nums such that nums[i] == nums[j] and abs(i - j) <= k.
+
+Input Format :
+An integer array nums of length N, representing the data to be analyzed.
+
+An integer K, which defines the maximum distance allowed between the indices of the two identical elements.
+
+Output Format :
+The program should return true if there exist two distinct indices i and j in the array nums that satisfy nums[i] == nums[j] and abs(i - j) <= k. Otherwise, it should return false.
+
+Input :
+6
+1 2 3 1 2 3
+2 
+
+
+Output :
+false
+
+
+Constraints :
+1 <= nums.length <= 10^5
+-10^9 <= nums[i] <= 10^9
+0 <= k <= 10^5 */
+
+
+#include <bits/stdc++.h>
+using namespace std;
+bool fun(vector<int>& nums, int k) {
+    unordered_map<int, int> mp;
+    for (int i = 0; i < nums.size(); i++) {
+        int num = nums[i];
+        if (mp.find(num) != mp.end() && abs(i - mp[num]) <= k) {
+            return true;
+        }
+        mp[num] = i;
+    }
+    return false;
+}
+int main() {
+    int n, k;
+    cin >> n;
+    vector<int> nums(n);
+    for (int i = 0; i < n; i++) {
+        cin >> nums[i];
+    }
+    cin>> k;
+    bool result =fun(nums, k);
+    if (result){
+        cout << "true" << endl;
+    }
+    else{
+        cout << "false" << endl;
+    }
+
+    return 0;
+}
