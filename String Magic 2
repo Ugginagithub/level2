@@ -1,0 +1,57 @@
+/*String Magic 2
+Program Description :
+Given an String with Numbers and some characters. You Need to Add all numbers in the string and print the total sum.
+
+note:
+negative numbers are also given,
+if "-" presents after any number then it means negative number, an "-" without number can be ignored
+example: code-9 gives -9 and code-ii gives 0
+
+Note:
+
+example: In code123mind67, we have to take conntinous number as 123 and 67, but not 1,2,3,6,7. Therefore total sum is 123+67=190 
+
+Input Format :
+A single line contains a string S.
+
+Output Format :
+Print the total sum of numbers in the given string.
+
+Input :
+fcggyuh67cgh-33
+
+
+Output :
+34
+
+
+Constraints :
+1<= len(S) <=10^4*/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    string s;
+    cin >> s;
+    int num = 0; 
+    int totalSum = 0;
+    bool isNegative = false;
+    for (char ch : s) {
+        if (isdigit(ch)) num=num*10+(ch-'0');
+        else if (ch == '-') isNegative = true;
+        else{
+            if(isNegative) {
+                num *= -1;
+            }
+            totalSum += num;
+            num = 0;
+            isNegative = false;
+        }
+    }
+    if (isNegative) {
+        num *= -1;
+    }
+    totalSum += num;
+    cout<<totalSum;
+}
