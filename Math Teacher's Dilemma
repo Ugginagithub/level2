@@ -1,0 +1,41 @@
+/*Math Teacher's Dilemma
+Program Description :
+You are helping a math teacher prepare a lesson on the concepts of LCM (Least Common Multiple) and GCD (Greatest Common Divisor). The teacher wants to demonstrate these concepts to the students by finding the LCM and GCD of two numbers, A and B.
+
+Write a function "find_lcm_gcd(A, B)" that takes two positive integers A and B as input and returns their LCM and GCD.
+
+Your task is to implement this function and help the teacher complete the lesson plan.
+
+Input Format :
+Two positive integers A and B, separated by a space.
+
+Output Format :
+Two space-separated integers, representing the LCM and GCD of A and B, respectively.
+
+Input :
+5 10
+
+
+Output :
+10 5
+
+
+Constraints :
+1 <= A, B <= 10^6*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int gcd(int a,int b)
+{
+    if(b==0)return a;
+    return gcd(b,a%b);
+}
+int lcm(int a,int b)
+{
+    return ((a*b)/gcd(a,b));
+}
+int main(){
+    int a,b;
+    cin>>a>>b;
+    cout<<lcm(a,b)<<" "<<gcd(a,b);
+}
