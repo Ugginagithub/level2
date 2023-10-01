@@ -1,0 +1,49 @@
+/*Steps to Make Array Non-Decreasing
+Program Description :
+You are given a 0-indexed integer array nums. In one step, remove all elements nums[i] where nums[i - 1] > nums[i] for all 0 < i < nums.length.
+
+print the number of steps performed until nums becomes a non-decreasing array. 
+
+Input Format :
+First line consist of a Singlr integer which indicates Length of an array
+
+Second line consist of N sapce sepreated integers
+
+Output Format :
+Single integer output
+
+Input :
+11
+
+5 3 4 4 7 3 6 11 8 5 11 
+
+
+Output :
+3
+
+
+Constraints :
+0<=N<=10^6
+0<=A[i]<=10^6*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++) cin>>arr[i];
+    stack<pair<int,int>> st;
+    int maxi=0;
+    st.push({arr[n-1],0});
+    for(int i=n-2;i>=0;i--){
+        int steps=0;
+        while(!st.empty() && st.top().first<arr[i]){
+            steps=max(steps+1,st.top().second);
+            st.pop();
+        }
+        maxi=max(maxi,steps);
+        st.push({arr[i],steps});
+    }
+    cout<<maxi;
+}
