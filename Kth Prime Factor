@@ -1,0 +1,58 @@
+/*Kth Prime Factor
+Program Description :
+You are tasked with writing a Python function to find the kth prime factor of a given number n. Prime factors are the prime numbers that divide n without leaving any remainder. For example, the prime factors of 12 are 2 and 3 because 12 = 2 * 2 * 3.
+
+Your function should take two integer inputs: n and k, and return the kth prime factor of n. If there are fewer than k prime factors, your function should return -1.
+
+Input Format :
+The first line contains an integer n
+
+The second line contains an integer k 
+
+Output Format :
+print kth prime factor of n. Else print -1.
+
+Input :
+225
+
+2
+
+
+Output :
+3
+
+
+Constraints :
+1 ≤ n ≤ 10^4
+1 ≤ k ≤ 50*/
+
+
+def is_prime(num):
+    if num <= 1:
+        return False
+    if num <= 3:
+        return True
+    if num % 2 == 0 or num % 3 == 0:
+        return False
+    i = 5
+    while i * i <= num:
+        if num % i == 0 or num % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+def kth_prime_factor(n, k):
+    primes = []
+    candidate = 2
+    while n > 1:
+        if is_prime(candidate) and n % candidate == 0:
+            primes.append(candidate)
+            n //= candidate
+            if len(primes) == k:
+                return primes[-1]
+        else:
+            candidate += 1
+    return -1
+n = int(input())
+k = int(input())
+result = kth_prime_factor(n, k)
+print(result)
