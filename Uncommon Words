@@ -1,0 +1,38 @@
+/*Uncommon Words
+Program Description :
+You are working on a text processing application, and you need to find all the uncommon words between two sentences, s1 and s2. Uncommon words are words that appear in one sentence but not in the other. Your task is to write a Python function to identify and print these uncommon words in the specified order.
+
+Input Format :
+The first line contains a string S1.
+
+The second line contains a string S2.
+
+Output Format :
+Print the words seperated by a space in the following order, first print the s1 sentence words then s2 sentence. 
+
+Input :
+this apple is sweet
+
+this apple is sour
+
+
+Output :
+sweet sour
+
+
+Constraints :
+2<= len(S1), len(S2) <=1000*/
+
+
+def uncommon_words(s1, s2):
+    ws1 = s1.split()
+    ws2 = s2.split()
+    set_s1 = set(ws1)
+    set_s2 = set(ws2)
+    arr = list(set_s1.symmetric_difference(set_s2))
+    arr.sort(key=lambda i: (i in ws1, i in ws2))
+    return arr
+s1 = input()
+s2 = input()
+res=uncommon_words(s2, s1)
+print(" ".join(res))
