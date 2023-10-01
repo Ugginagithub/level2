@@ -1,0 +1,68 @@
+/*Miss And Repeat
+Program Description :
+You are a data analyst working for a healthcare organization. Your team is responsible for maintaining patient records, and these records are stored in arrays for analysis. Due to a data entry error, one patient's ID number is missing, and another patient's ID number has been duplicated in the array. It's crucial to identify the missing ID (X) and the duplicated ID (Y) to ensure the accuracy of patient records and billing.
+
+Problem Statement:
+
+Write a function to find the missing ID (X) and the duplicated ID (Y) in an unsorted array of positive integers. This function is vital for maintaining accurate patient records and billing within the healthcare organization.
+
+Input Format :
+First line contains an integer N, which is size of the array.
+
+Second line contains N space separated integers in a single line. 
+
+Output Format :
+Print Y -> repeating twice and X -> missing in the array. 
+
+Input :
+2
+
+2 2 
+
+
+Output :
+2 1 
+
+
+Constraints :
+1 <= N <= 10^5
+
+1 <= A[i] <= N. */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int repeat(int arr[],int n)
+{
+    unordered_map<int,int> m;
+    for(int i=0;i<n;i++)
+    {
+        m[arr[i]]++;
+        if(m[arr[i]]>1)
+        {
+            return arr[i];
+        }
+    }
+    return -1;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int sum;
+    sort(arr,arr+n);
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]!=(i+1))
+        {
+            sum=i+1;
+            break;
+        }
+    }
+    cout<<repeat(arr,n)<<" "<<(sum);
+}
