@@ -1,0 +1,75 @@
+/*Equilibrium Point
+Program Description :
+You are a software developer working on an e-commerce website's recommendation system. Part of your job is to analyze user purchase histories stored in arrays to provide personalized product recommendations. To do this effectively, you need to find the first equilibrium point in an array of positive numbers. The equilibrium point helps identify the user's transition from browsing to purchasing.
+
+Problem Statement:
+
+Write a program to find the first equilibrium point in an array of positive numbers. An equilibrium point is a position in the array such that the sum of elements before it is equal to the sum of elements after it. Identifying the first equilibrium point is crucial for understanding user behavior on the e-commerce platform.
+
+Input Format :
+first line contains integer n which is the size of the array
+
+second line has n spaced Integer  
+
+Output Format :
+print the eqilibrium point  
+
+Input :
+5
+1 3 5 2 2  
+
+
+Output :
+3
+
+
+Constraints :
+1 <= n <= 10^6
+1 <= A[i] <= 10^8 */
+
+
+
+
+#include <iostream>
+using namespace std;
+
+int findEquilibriumPoint(int arr[], int n) {
+    int totalSum = 0; // Total sum of the array elements
+    int leftSum = 0; // Sum of elements to the left of the current element
+
+    for (int i = 0; i < n; i++) {
+        totalSum += arr[i];
+    }
+
+    for (int i = 0; i < n; i++) {
+        // Update totalSum to exclude the current element.
+        totalSum -= arr[i];
+
+        if (leftSum == totalSum) {
+            // If the left sum and the total sum are equal, we found an equilibrium point.
+            return i;
+        }
+
+        // Update leftSum to include the current element.
+        leftSum += arr[i];
+    }
+
+    // If there's no equilibrium point, return -1.
+    return -1;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int arr[n];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    int equilibriumPoint = findEquilibriumPoint(arr, n);
+
+    cout << equilibriumPoint+1 << endl;
+
+    return 0;
+}
