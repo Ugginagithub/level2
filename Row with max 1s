@@ -1,0 +1,67 @@
+/*Row with max 1s
+Program Description :
+You are working on a project to optimize a surveillance system that monitors a secure facility. The surveillance system is equipped with a grid of cameras, where each camera can either be in an active state (1) or inactive state (0). The cameras are arranged in rows and columns, and each row is sorted in ascending order, meaning that the cameras are positioned such that all the 1's appear before the 0's in each row. Your task is to find the row with the maximum number of active cameras, as this row corresponds to the area with the highest surveillance coverage.
+
+Input Format :
+The first line contains an integer represents the length of rows and columns.
+
+Output Format :
+Print the row index with maximim 1's. (0 based index)
+
+Input :
+4
+
+0 1 1 1
+
+0 0 1 1
+
+1 1 1 1
+
+0 0 0 0
+
+
+Output :
+2
+
+
+Constraints :
+1 ≤ N, M ≤ 103
+0 ≤ Arr[i][j] ≤ 1
+*/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n][n];
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            cin>>arr[i][j];
+        }
+    }
+    int c=0,maxi=-1,k;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(arr[i][j]==1)
+            {
+                c++;
+            }
+            else{
+                continue;
+            }
+        }
+        if(c>maxi)
+        {
+            maxi=c;
+            k=i;
+        }
+    }
+    cout<<k;
+}
