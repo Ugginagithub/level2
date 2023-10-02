@@ -1,0 +1,63 @@
+/*Subarrays with Target Sum
+Program Description :
+You are working on a financial analysis application that tracks stock prices throughout the day. Your task is to implement a function that calculates the total number of subarrays with a specific target sum, which can be used to identify potential investment opportunities.
+
+You are given an array of integers nums representing the stock prices at different times during the day. Additionally, you are provided with an integer k, which represents the target sum.
+
+Input Format :
+The first line contains an integer N representing the length of the array.
+
+The second line contains space-separated integers.
+
+Output Format :
+Print the count of sub-arrays with a sum equals to k.
+
+Input :
+3
+
+1 1 1
+
+2
+
+
+Output :
+2
+
+
+Constraints :
+1 <= nums.length <= 2 * 104
+
+-1000 <= nums[i] <= 1000
+
+-107 <= k <= 107*/
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+int fun(vector<int> &v, int k) {
+    int count = 0;
+    int currentSum = 0;
+    unordered_map<int, int> mp;
+    mp[0] = 1;
+    for (int i : v) {
+        currentSum += i;
+        if (mp.find(currentSum - k) != mp.end()) {
+            count += mp[currentSum - k];
+        }
+        mp[currentSum]++;
+    }
+    return count;
+}
+int main() {
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+    int k;
+    cin >> k;
+    int res=fun(v,k);
+    cout<<res;
+}
