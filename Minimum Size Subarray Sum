@@ -1,0 +1,59 @@
+/*Minimum Size Subarray Sum
+Program Description :
+You are working on a system that tracks the performance of athletes in a race. Each athlete is assigned a unique positive integer identifier, and their race times are recorded as an array of positive integers.
+
+You are tasked with writing a function find_min_subarray_length to help identify the minimal length of a contiguous subarray of race times such that the sum of the race times in this subarray is greater than or equal to a given target time.
+
+Write a Python function "find_min_subarray_length(nums: List[int], target: int)" -> int that takes the following parameters:
+
+nums (List[int]): A list of positive integers representing the race times of athletes. The length of this list (n) will be at most 10^5, and each element of the list (nums[i]) will be at most 1000.
+
+target (int): A positive integer representing the target race time that needs to be achieved.
+
+The function should return an integer, which is the minimal length of a contiguous subarray of race times whose sum is greater than or equal to the target time. If there is no such subarray, return 0.
+
+Input Format :
+The first line contains an integer N, where N is the length of an array
+The second line contains an N spaced integers(Array)
+The third line contains an integer target
+
+Output Format :
+Print an integer which is the minimal length of a contiguous subarray of race times whose sum is greater than or equal to the target time. If there is no such subarray, return 0.
+
+Input :
+6
+
+2 3 1 2 4 3
+
+7
+
+
+Output :
+2
+
+
+Constraints :
+1 <= target <= 109
+1 <= nums.length <= 105
+1 <= nums[i] <= 1000*/
+
+
+
+def fun(nums, k):
+    if not nums:
+        return 0
+    min_length = float('inf')
+    current_sum = 0
+    left = 0
+    for right in range(len(nums)):
+        current_sum += nums[right]
+        while current_sum >= k:
+            min_length = min(min_length, right - left + 1)
+            current_sum -= nums[left]
+            left += 1
+    return min_length if min_length != float('inf') else 0
+N = int(input())
+arr= list(map(int, input().split()))
+k = int(input())
+result = fun(arr,k)
+print(result)
