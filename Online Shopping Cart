@@ -1,0 +1,77 @@
+/*Online Shopping Cart
+Program Description :
+You are working as a software engineer for an e-commerce company, and you are tasked with implementing a feature that helps users find the equilibrium point in their shopping cart. In the shopping cart, each item has a certain price. The equilibrium point is the index at which the total cost of items on the left equals the total cost of items on the right. Your task is to find the index of the first equilibrium point in the shopping cart array.
+
+Scenario Description:
+
+Users of your e-commerce platform can add various items to their shopping cart, and you want to enhance their shopping experience by indicating the point at which their cart's total cost is balanced. To do this, you'll need to implement a function that finds the first equilibrium index in the cart array.
+
+Question:
+
+Write a Python function find_equilibrium_index(cart) that takes a list cart as input, where each element represents the price of an item in the cart. Your function should return the index of the first equilibrium point in the cart. If no equilibrium point exists, return -1.
+
+Input Format :
+The first line of input takes an integer T denoting the no of test cases, then T test cases follow. The first line of each test case is an integer N denoting The size of the array. Then in the next line are N space-separated values of the array.
+
+Output Format :
+For each test case, the output will be the equilibrium index of the array. If no such index exists output will be -1.
+
+Input :
+2
+
+4
+
+1 2 0 3
+
+4
+
+1 1 1 1
+
+
+Output :
+2
+
+-1  
+
+
+Constraints :
+1<=T<=100
+
+1<=N<=105
+
+-1000<=A[]<=1000*/
+
+#include <bits/stdc++.h>
+using namespace std;
+int fun(vector<int>& cart) {
+    int n = cart.size();
+    if (n == 0) {
+        return -1;
+    }
+    int totalSum = accumulate(cart.begin(),cart.end(),0);
+    int leftSum = 0;
+    for (int i = 0; i < n; i++) {
+        totalSum -= cart[i];
+        if (leftSum == totalSum) {
+            return i;
+        }
+        leftSum += cart[i];
+    }
+    return -1;
+}
+int main() {
+    int T;
+    cin >> T;
+    while(T--) {
+        int N;
+        cin >> N;
+        vector<int> cart(N);
+        for (int i = 0; i < N; i++) {
+            cin >> cart[i];
+        }
+        int res = fun(cart);
+        cout << res << endl;
+    }
+}
+
+
