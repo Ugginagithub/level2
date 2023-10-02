@@ -1,0 +1,70 @@
+/*Three Sum
+Program Description :
+You are given an integer array nums of length n. Your task is to write a function countZeroSumTriplets(nums) that counts and returns the number of unique triplets [nums[i], nums[j], nums[k]] such that:
+
+i != j != k, i.e., all three elements are distinct.
+
+nums[i] + nums[j] + nums[k] == 0.
+
+Your task is to implement the countZeroSumTriplets function.
+
+Input Format :
+An integer n represents the number of elements in the array.
+
+An array nums of n integers.
+
+Output Format :
+Return an integer representing the count of unique triplets that satisfy the conditions.
+
+Input :
+6
+
+-1 0 1 2 -1 -4
+
+
+Output :
+2
+
+
+Constraints :
+1 <= n <= 1000
+
+-1000 <= nums[i] <= 1000*/
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+int fun(vector<int>& nums) {
+    sort(nums.begin(), nums.end());
+    int count = 0;
+    int n = nums.size();
+    for (int i = 0; i < n-2; i++) {
+        if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
+            int low = i + 1;
+            int high = n - 1;
+            while (low < high) {
+                int total = nums[i] + nums[low] + nums[high];
+                if (total == 0) {
+                    count++;
+                    while (low < high && nums[low] == nums[low+1]) low++;
+                    while (low < high && nums[high] == nums[high-1]) high--;
+                    low++;
+                    high--;
+                }
+                else if (total < 0) low++;
+                else high--;
+            }
+        }
+    }
+    return count;
+}
+int main() {
+    int n;
+    cin >> n;
+    vector<int> nums(n);
+    for (int i = 0; i < n; i++) cin >> nums[i];
+    int result = fun(nums);
+    cout << result;
+}
