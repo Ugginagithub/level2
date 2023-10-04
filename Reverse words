@@ -1,0 +1,50 @@
+/*Reverse words
+Program Description :
+You are a software developer working on a text-processing application. Part of your task involves creating a function that can reverse the order of words in a string while ensuring that the resulting string has a single space between words, even if the input string contains leading or trailing spaces or multiple spaces between words. This function is essential for improving the readability of text.
+
+Problem Statement:
+
+Write a program to reverse the order of words in a string, ensuring that the resulting string has a single space between words. The input string may contain leading or trailing spaces or multiple spaces between words.
+
+Input Format :
+The program should accept a single input string s. The input string s can have leading or trailing spaces and may contain multiple spaces between words.
+
+Output Format :
+The program should return a string with the words in reverse order, where there is only a single space between words, and leading/trailing spaces or extra spaces between words are removed.
+
+Input :
+the sky is blue
+
+
+Output :
+blue is sky the
+
+
+Constraints :
+0<=N<=10^5 */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string s;
+    getline(cin,s);
+    stringstream ss(s);
+    string word;
+    vector<string> v;
+    while(ss>>word)
+    {
+        v.push_back(word);
+    }
+    string revstr;
+    for(int i=v.size()-1;i>=0;i--)
+    {
+        revstr+=v[i];
+        if(i!=0)
+        {
+            revstr+=" ";
+        }
+    }
+    cout<<revstr;
+}
