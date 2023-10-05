@@ -1,0 +1,68 @@
+/*Make Even Sum
+Program Description :
+Prasad is working on a coding challenge involving arrays. He's given an array of integers of length N, and he needs to determine if it's possible to split the array into pairs such that each element in the array belongs to exactly one pair, and the sum of each pair is even. Prasad is not sure how to approach this problem and has asked for your help in implementing a function to solve it.
+
+Write a function "is_possible_to_split(array)" to help Prasad. The function should take in a list of integers, an array, and return 1 if it's possible to split the array into pairs meeting the given conditions, and 0 otherwise.
+
+Input Format :
+The first line contains an integer N represent the length of array.
+
+The second line contains space separated integers in the range of N.
+
+Output Format :
+Print 1 if possible else print 0.
+
+Input :
+ 4
+
+1 1 2 3
+
+
+Output :
+0
+
+
+Constraints :
+1< N <=10^6
+
+1<= N[i] <=10^4*/
+
+
+
+#include <iostream>
+#include <vector>
+
+int is_possible_to_split(std::vector<int> array) {
+    int even_count = 0;
+    int odd_count = 0;
+
+    for (int num : array) {
+        if (num % 2 == 0) {
+            even_count++;
+        } else {
+            odd_count++;
+        }
+    }
+
+    if (odd_count % 2 == 0) {
+        return 1;  // It's possible to split into pairs with even sums
+    } else {
+        return 0;  // It's not possible to split into pairs with even sums
+    }
+}
+
+int main() {
+    int N;
+    std::cin >> N;
+
+    std::vector<int> array(N);
+
+    for (int i = 0; i < N; i++) {
+        std::cin >> array[i];
+    }
+
+    int result = is_possible_to_split(array);
+    std::cout << result << std::endl;
+
+    return 0;
+}
