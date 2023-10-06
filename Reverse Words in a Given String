@@ -1,0 +1,57 @@
+/*Reverse Words in a Given String
+Program Description :
+You are working on a text processing application that needs to reverse the order of words in a string without changing the characters within each word. The input string consists of words separated by dots ('.'). Your task is to write a Python function to implement this functionality.
+
+Input Format :
+A string input_string containing words separated by dots. The string may contain letters (both uppercase and lowercase) and dots.
+
+Output Format :
+Return a string with the words reversed, but maintaining the characters within each word.
+
+Input :
+i.like.this.program.very.much
+
+
+Output :
+much.very.program.this.like.i
+
+
+Constraints :
+1 <= len(input_string) <= 10^5*/
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+string reversestring(string n)
+{
+    stringstream ss(n);
+    vector<string> words;
+    string word;
+    while(getline(ss,word,'.'))
+    {
+        words.push_back(word);
+    }
+    int k=words.size();
+    for(int i=0;i<k/2;i++)
+    {
+        swap(words[i],words[k-i-1]);
+    }
+    string result;
+    for(int i=0;i<k;i++)
+    {
+        result+=words[i];
+        if(i<k-1)
+        {
+            result+='.';
+        }
+    }
+    return result;
+}
+int main()
+{
+    string s;
+    getline(cin,s);
+    string res=reversestring(s);
+    cout<<res;
+}
